@@ -30,13 +30,13 @@ export const showUsersById = async (req, res) => {
 }
 
 export const createUser = async (req, res) => {
-    const { username, password } = req.body;
+    const { empid, password } = req.body;
     getUsers((err, results) => {
         if(err) {
             res.send(err);
         } else {
             const user = results.find(function(u) {
-                return u.username === username;
+                return u.empid === empid;
             })
             if (user) {
                 return res.status(401).send({"message":"User already exists."});
