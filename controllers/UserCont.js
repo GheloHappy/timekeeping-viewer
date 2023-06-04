@@ -35,10 +35,10 @@ export const createUser = async (req, res) => {
         if(err) {
             res.send(err);
         } else {
-            const user = results.find(function(u) {
+            const users = results.filter(function(u) {
                 return u.empid === empid;
-            })
-            if (user) {
+            });
+            if (users) {
                 return res.status(401).send({"message":"User already exists."});
             } else {
                 const saltRounds = 10;
